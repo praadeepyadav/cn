@@ -1,0 +1,29 @@
+clc;
+clear all;
+close all;
+fc = 220;
+fm = fc/8;
+fs = 100*fc;
+t=0:1/fs:4/fm; 
+%MESSAGE SIGNAL
+Am = cos(2*pi*fm*t);
+%CARRIER SIGNAL
+Ac = 0.5*square(2*pi*fc*t)+0.5;
+%PULSE AMPLITUDE MODULATED SIGNAL
+Apam = Am.*Ac;
+%GRAPH PLOTTING
+subplot(3,1,1);
+plot(t,Am);
+title('MESSAGESIGNAL');
+xlabel('TIME PERIOD');
+ylabel('AMPLITUDE');
+subplot(3,1,2);
+plot(t,Ac);
+title('CARRIER SIGNAL'); 
+xlabel('TIME PERIOD');
+ylabel('AMPLITUDE');
+subplot(3,1,3);
+plot(t,Apam);
+title('PULSE AMPLITUDE MODULATEDSIGNAL');
+xlabel('TIME PERIOD');
+ylabel('AMPLITUDE');

@@ -1,0 +1,28 @@
+clc;
+clear ;
+close all;
+%% High Pass Filter
+w=0:0.001:1000;
+G1=(j*w)./(1+j*w);
+subplot(3,1,1);
+semilogx(w,abs(G1));
+grid on;
+xlabel('Frequency');
+ylabel('Gain');
+title('High Pass Filter Response');
+%% Low Pass Filter
+G2=1./(1+j*w);
+subplot(3,1,2);
+semilogx(w,abs(G2),'g');
+grid on;
+xlabel('Frequency');
+ylabel('Gain');
+title('Low Pass Filter Response');
+%% Band PAss Filter
+G=G1.*G2;
+subplot(3,1,3);
+semilogx(w,abs(G),'m');
+grid on;
+xlabel('Frequency');
+ylabel('Gain');
+title('Band Pass Filter Response')

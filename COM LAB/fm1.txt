@@ -1,0 +1,25 @@
+clc
+clear
+close all
+Kf=input("Enter the deviation factor");
+Am=5;
+Fm=10;
+B=(Kf*Am)/Fm;
+t=linspace(0,1,500); %generate linear space vector
+Ac=2;
+Fc=20;
+sfm=Ac*cos((2*pi*Fc*t)+B*sin(2*pi*Fm*t));
+mt=Am*cos(2*pi*Fm*t);
+ct=Ac*cos(2*pi*Fc*t);
+subplot(4,1,1)
+plot(mt);
+subplot(4,1,2)
+plot(ct);
+subplot(4,1,3)
+plot(sfm);
+x=diff(sfm);
+y=abs(x);
+[b,a]=butter(10,0.056);
+s=filter(b,a,y);
+subplot(4,1,4)
+plot(s);50

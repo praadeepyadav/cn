@@ -1,0 +1,28 @@
+clc
+clear
+close all
+Kp=input("Enter the deviation factor");
+fm=5;
+fc=20;
+t=0:0.0001:1;
+xm=cos(2*pi*fm*t);
+xc=cos(2*pi*fc*t);
+ypm=cos(2*pi*fc*t + Kp*xm);
+subplot(3,1,1)
+plot(t,xm);
+title('Message Signal');
+xlabel('Time');
+ylabel('Amplitude');
+grid on;
+subplot(3,1,2)
+plot(t,xc);
+title('Carrier Signal');
+xlabel('Time');
+ylabel('Amplitude');
+grid on;
+subplot(3,1,3)
+plot(t,ypm,t,xm);
+title('Phase Modulated Signal');
+xlabel('Time');
+ylabel('Amplitude');
+grid on;
